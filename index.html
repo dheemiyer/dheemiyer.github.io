@@ -3,84 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dheemanth (Dheem) Iyer - Portfolio</title>
+    <title>Dheemanth Iyer | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; max-width: 800px; margin: 0 auto; padding: 2rem; color: #333; }
-        h1 { margin: 0; font-size: 2.5rem; }
-        h2 { font-size: 1.5rem; color: #222; margin-top: 0; }
-        h3 { margin: 0 0 0.2rem 0; font-size: 1.2rem; }
-        p { margin: 0 0 1rem 0; }
-        a { color: #0056b3; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .header { margin-bottom: 2rem; }
-        .contact { color: #666; font-size: 0.95rem; margin-top: 0.5rem; }
-        .section { margin-bottom: 2rem; border-top: 1px solid #ddd; padding-top: 1.5rem; }
-        .item { margin-bottom: 1.5rem; }
-        .meta { color: #555; font-size: 0.9rem; margin-bottom: 0.5rem; font-style: italic; }
-        .skills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .skill-tag { background: #f0f0f0; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem; }
+        :root { 
+            --bg-main: #ffffff; 
+            --text-main: #000000; 
+            --text-muted: #333333; 
+            --accent-green: #2b4231; 
+            --border-color: #d1d5db; 
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'EB Garamond', serif; 
+            background: var(--bg-main); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            padding-bottom: 4rem; 
+            -webkit-font-smoothing: antialiased; 
+            font-size: 1.15rem;
+        }
+        
+        h1, h2, h3, h4 { font-weight: 600; color: var(--text-main); }
+        a { color: var(--accent-green); text-decoration: none; transition: 0.2s; }
+        a:hover { opacity: 0.7; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+        
+        .hero { 
+            padding: 12rem 0 8rem; 
+            background: linear-gradient(rgba(43, 66, 49, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498855926480-d98e83099315?auto=format&fit=crop&q=80&w=2000') center/cover fixed;
+            border-bottom: 5px solid var(--accent-green); 
+            color: #ffffff;
+        }
+        .hero-inner { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+        .hero h1 { font-size: 4.2rem; margin-bottom: 1.5rem; letter-spacing: -0.5px; color: #ffffff; line-height: 1.1; }
+        .hero p { font-size: 1.4rem; color: #f3f4f6; max-width: 850px; font-weight: 400; line-height: 1.6; }
+        
+        .split-section { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; padding: 4rem 0; border-bottom: 1px solid var(--border-color); }
+        .section { padding: 4rem 0; border-bottom: 1px solid var(--border-color); }
+        .section-title { font-size: 2.2rem; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; color: var(--accent-green); border-bottom: 2px solid var(--accent-green); padding-bottom: 0.5rem; display: inline-block; }
+        
+        .contact-box { background: var(--accent-green); padding: 2.5rem; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .contact-box h2 { margin-bottom: 1.5rem; font-size: 1.6rem; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; }
+        .contact-box p { color: #e5e7eb; margin-bottom: 1rem; }
+        .contact-box a { display: block; margin-bottom: 0.5rem; color: #ffffff; font-weight: 500; }
+        .contact-box .resume-link { margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; }
+        
+        .item { margin-bottom: 3.5rem; }
+        .item:last-child { margin-bottom: 0; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.25rem; }
+        .item-title { font-size: 1.5rem; font-weight: 600; color: var(--text-main); }
+        .item-meta { font-size: 1.1rem; color: var(--text-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .item-subtitle { font-style: italic; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
+        
+        ul.bullets { margin-left: 1.5rem; color: var(--text-main); }
+        ul.bullets li { margin-bottom: 0.5rem; padding-left: 0.5rem; }
+        
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-tag { border: 1px solid var(--accent-green); background: #ffffff; padding: 0.4rem 1.2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-green); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .split-section { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 3rem; }
+            .item-header { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Dheemanth (Dheem) Iyer</h1>
-        <p class="contact">
-            Mechanical Engineering @ Virginia Tech<br>
-            <a href="mailto:dheemiyer@vt.edu">dheemiyer@vt.edu</a> | (972) 214-7127 | <a href="https://linkedin.com/in/YOUR_LINKEDIN">LinkedIn</a>
-        </p>
+<div class="hero">
+    <div class="hero-inner">
+        <h1>I'm Dheemanth Iyer.</h1>
+        <p>I'm a Mechanical Engineer driven by optimizing complex physical systems. I am passionate about scaling processes from precision CAD design to automated fabrication and structural simulation. I constantly seek to improve my technical skills in fast-paced, competitive environments. Process engineering and structural dynamics have proven to be an excellent fit.</p>
     </div>
+</div>
 
-    <div class="section">
-        <h2>Education</h2>
-        <div class="item">
-            <h3>Virginia Tech</h3>
-            <div class="meta">B.S. Mechanical Engineering | Expected May 2028</div>
-            <p><strong>Coursework:</strong> Dynamics, Statics, Mechanics of Deformable Bodies, Manufacturing Processes, Linear Algebra, Multivariable Calculus, Physics</p>
+<div class="container">
+    <div class="split-section">
+        <div>
+            <h2 class="section-title">About Me</h2>
+            <p style="color: var(--text-main); margin-bottom: 1.5rem;">I am pursuing a Bachelor's degree in Mechanical Engineering at Virginia Tech, expected to graduate in May 2028. I currently work on the Baja SAE engineering team.</p>
+            <p style="color: var(--text-main);">Outside of my career, you can usually find me playing tennis, basketball, weight lifting, or following Formula One and automobiles. I love competition and high-performance engineering.</p>
         </div>
-    </div>
-
-    <div class="section">
-        <h2>Experience</h2>
-        <div class="item">
-            <h3>Walmart</h3>
-            <div class="meta">Process Engineer Intern | Jun 2026 – Aug 2026</div>
-            <p>Distribution center technology for automation and robotics deployment.</p>
-        </div>
-        <div class="item">
-            <h3>Virginia Tech BAJA SAE</h3>
-            <div class="meta">Brakes & Suspension Engineer | Apr 2026 – Present</div>
-            <p>SolidWorks CAD and FEA for 2026–2027 vehicle suspension and brake bias bar components.</p>
-        </div>
-        <div class="item">
-            <h3>Design, Build, Fly @ Virginia Tech</h3>
-            <div class="meta">Structures Engineer | Aug 2025 – May 2026</div>
-            <p>Modeled wing assemblies in Fusion 360, performed ANSYS FEA for 3G loads. Hand-fabricated structures to ±0.5 cm. MATLAB simulation for load distribution (4.0 FOS). Ranked 8th globally.</p>
-        </div>
-        <div class="item">
-            <h3>GoAhead Ventures</h3>
-            <div class="meta">Scout | Aug 2025 – Dec 2025</div>
-            <p>Industrials, Aerospace, Defense sector analysis.</p>
-        </div>
-        <div class="item">
-            <h3>iCloudFluence</h3>
-            <div class="meta">Software Engineer Intern | Jan 2025 – Apr 2025</div>
-            <p>Financial Consulting Services software development.</p>
+        <div class="contact-box">
+            <h2>Contact Details</h2>
+            <p>Dheemanth Iyer</p>
+            <a href="tel:9722147127">(972) 214-7127</a>
+            <a href="mailto:dheemiyer@vt.edu">dheemiyer@vt.edu</a>
+            <a href="#" target="_blank">LinkedIn Profile</a>
+            <a href="#" class="resume-link" target="_blank">View Resume &rarr;</a>
         </div>
     </div>
 
     <div class="section">
-        <h2>Projects</h2>
+        <h2 class="section-title">Education</h2>
         <div class="item">
-            <h3>Autonomous Wildfire Detection System</h3>
-            <div class="meta">Lead Engineer | Jan 2025 – May 2025</div>
-            <p>Sensor-fused hardware rig using thermal/humidity inputs for <5s fire detection. C++ control logic driving servo-actuation based on live data.</p>
+            <div class="item-header">
+                <h3 class="item-title">Virginia Tech</h3>
+                <span class="item-meta">Aug 2024 – May 2028</span>
+            </div>
+            <div class="item-subtitle">Bachelor of Science, Mechanical Engineering</div>
+            <p style="color: var(--text-main);"><strong>Coursework:</strong> Dynamics, Statics, Mechanics of Deformable Bodies, Manufacturing Processes Lab, Linear Algebra, Multivariable Calculus, Physics: Mechanics, Physics: Electricity and Magnetism</p>
         </div>
     </div>
 
     <div class="section">
-        <h2>Skills</h2>
-        <div class="skills-container">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Walmart</h3>
+                <span class="item-meta">June 2026 – Aug 2026</span>
+            </div>
+            <div class="item-subtitle">Process Engineer Intern • Grove City, OH</div>
+            <ul class="bullets">
+                <li>Evaluating and developing distribution center technology for automation and robotics deployment at warehouses.</li>
+            </ul>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Baja SAE</h3>
+                <span class="item-meta">April 2026 – Present</span>
+            </div>
+            <div class="item-subtitle">Brakes & Suspension Engineer • Blacksburg, VA</div>
+            <ul class="bullets">
+                <li>Developed SolidWorks CAD and executed FEA for vehicle suspension and brake bias bar components.</li>
+            </ul>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Design, Build, Fly</h3>
+                <span class="item-meta">Aug 2025 – May 2026</span>
+            </div>
+            <div class="item-subtitle">Structures Engineer • Blacksburg, VA</div>
+            <ul class="bullets">
+                <li>Engineered and fabricated composite wing assemblies, validating via ANSYS FEA to rank 8th globally.</li>
+            </ul>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">GoAhead Ventures</h3>
+                <span class="item-meta">Aug 2025 – Dec 2025</span>
+            </div>
+            <div class="item-subtitle">Scout • Remote</div>
+            <ul class="bullets">
+                <li>Conducted sector analysis and sourced opportunities within Industrials, Aerospace, and Defense markets.</li>
+            </ul>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">iCloudFluence</h3>
+                <span class="item-meta">Jan 2025 – Apr 2025</span>
+            </div>
+            <div class="item-subtitle">Software Engineer Intern • Remote</div>
+            <ul class="bullets">
+                <li>Software development and architecture for Financial Consulting Services.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Handheld Multi-Ball Tennis Launcher</h3>
+                <span class="item-meta">May 2026</span>
+            </div>
+            <div class="item-subtitle">Mechanical Designer</div>
+            <ul class="bullets">
+                <li>Engineered a portable, gravity-fed magazine and high-tension spring launch system with a geared cocking mechanism.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Autonomous Wildfire Detection System</h3>
+                <span class="item-meta">Jan 2025 – May 2025</span>
+            </div>
+            <div class="item-subtitle">Lead Engineer • Columbus, OH</div>
+            <ul class="bullets">
+                <li>Built a sensor-fused thermal hardware rig with C++ control logic for sub-5-second fire detection.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" style="border-bottom: none;">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
             <span class="skill-tag">Fusion 360</span>
             <span class="skill-tag">ANSYS</span>
             <span class="skill-tag">SolidWorks</span>
@@ -89,11 +208,16 @@
             <span class="skill-tag">Java</span>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">CNC Machining</span>
-            <span class="skill-tag">Mill/Drill</span>
+            <span class="skill-tag">Mill & Drill Press</span>
+            <span class="skill-tag">EDM</span>
             <span class="skill-tag">Soldering</span>
             <span class="skill-tag">3D Printing</span>
+            <span class="skill-tag">Kinematics</span>
+            <span class="skill-tag">Tolerance Engineering</span>
+            <span class="skill-tag">Power Transmission</span>
         </div>
     </div>
+</div>
 
 </body>
 </html>
